@@ -12,11 +12,29 @@
                 "properties": {
                     "element": {"#": "main"}
                 }
+            },
+            "rep": {
+                "prototype": "montage/ui/repetition.reel",
+                "properties": {
+                    "element": { "#": "items" },
+                    "content": [ 1, 2, 3, 4, 5 ]
+                }
+            },
+            "item": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": { "#": "item" },
+                    "value": "I am a list item"
+                }
             }
         }
     </script>
 </head>
 <body>
-    <div data-montage-id="main" data-montage-skin="light" class="Main"></div>
+    <div data-montage-id="main" data-montage-skin="light" class="Main">
+        <ul data-montage-id="items">
+            <li data-montage-id="item"></li>
+        </ul>
+    </div>
 </body>
 </html>
