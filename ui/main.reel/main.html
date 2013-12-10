@@ -83,21 +83,26 @@
     </script>
 </head>
 <body>
-    <div data-montage-id="main" data-montage-skin="light" class="Main">
+    <div data-montage-id="main">
         <h1 data-montage-id="currentsub"></h1>
-        
-        <ul data-montage-id="items">
-            <li data-montage-id="item"></li>
-        </ul>
-        
+    
+        <div class="navigation">
+            <div class="header">Navigation</div>
+            <ul data-montage-id="items">
+                <li data-montage-id="item"></li>
+            </ul>
+        </div>
+    
         <table data-montage-id="stories">
-            <tr>
-                <td data-montage-id="score"></td>
+            <tbody><tr>
                 <td>
-                    <p><a data-montage-id="title"></a></p>
-                    <p>Posted by <span data-montage-id="author"></span></p>
+                    <p class="score" data-montage-id="score"></p>
                 </td>
-            </tr>
+                <td>
+                    <p class="title"><a data-montage-id="title"></a></p>
+                    <p class="author">Posted by <span data-montage-id="author"></span></p>
+                </td>
+            </tr></tbody>
         </table>
     </div>
 </body>
