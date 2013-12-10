@@ -17,6 +17,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     
     templateDidLoad: {
         value: function() {
+            this.addPathChangeListener("templateObjects.rep.selection.0.data",
+                           this, "handleSelection");
+            
             var script = document.createElement("script");
             script.src = "http://www.reddit.com/reddits.json?jsonp=subfn";
 
@@ -29,5 +32,23 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         }
     },
 
-    subs: { value: [] }
+    subs: { value: [] },
+    
+    handleSelection: {
+        value: function(selected) {
+            if (selected) {
+                var script = document.createElement("script");
+                script.src = "http://www.reddit.com/" + selected.url + ".json?sort=top&t=month&jsonp=storyfn";
+    
+                var component = this;
+                window["storyfn"] = function(jsonData) {
+                    component.stories = jsonData.data.children;
+                };
+    
+                document.head.appendChild(script);
+            }
+        }
+    },
+    
+    stories: { value: [] }
 });
