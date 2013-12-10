@@ -15,14 +15,19 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         }
     },
     
-    subs: {
-        value: [
-            { display_name: "HTML", url: "/r/html5" },
-            { display_name: "Programming", url: "/r/programming" },
-            { display_name: "Coding", url: "/r/coding" },
-            { display_name: "Comp Sci", url: "/r/compsci" },
-            { display_name: "Web Dev", url: "/r/webdev" },
-            { display_name: "Startups", url: "/r/startups" }
-        ]
-      }
+    templateDidLoad: {
+        value: function() {
+            var script = document.createElement("script");
+            script.src = "http://www.reddit.com/reddits.json?jsonp=subfn";
+
+            var component = this;
+            window["subfn"] = function(jsonData) {
+                component.subs = jsonData.data.children;
+            };
+
+            document.head.appendChild(script);
+        }
+    },
+
+    subs: { value: [] }
 });
