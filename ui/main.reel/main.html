@@ -31,12 +31,24 @@
                 "bindings": {
                     "value": {"<-": "@rep.objectAtCurrentIteration.display_name"}
                 }
+            },
+            
+            "currentsub": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": {"#": "currentsub"}
+                },
+                "bindings": {
+                    "value": {"<-": "@rep.selection.0.display_name ?? 'Please Select a Sub'"}
+                }
             }
         }
     </script>
 </head>
 <body>
     <div data-montage-id="main" data-montage-skin="light" class="Main">
+        <h1 data-montage-id="currentsub"></h1>
+        
         <ul data-montage-id="items">
             <li data-montage-id="item"></li>
         </ul>
