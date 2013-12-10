@@ -23,8 +23,10 @@
             "item": {
                 "prototype": "montage/ui/text.reel",
                 "properties": {
-                    "element": { "#": "item" },
-                    "value": "I am a list item"
+                    "element": { "#": "item" }
+                },
+                "bindings": {
+                    "value": {"<-": "@rep.objectAtCurrentIteration"}
                 }
             }
         }
