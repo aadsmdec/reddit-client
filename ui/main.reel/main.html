@@ -41,6 +41,44 @@
                 "bindings": {
                     "value": {"<-": "@rep.selection.0.data.display_name ?? 'Please Select a Sub'"}
                 }
+            },
+            
+            "stories": {
+                "prototype": "montage/ui/repetition.reel",
+                "properties": {
+                    "element": { "#": "stories" }
+                },
+                "bindings": {
+                    "content": { "<-": "@owner.stories" }
+                }
+            },
+            "title": {
+                "prototype": "matte/ui/anchor.reel",
+                "properties": {
+                    "element": { "#": "title" }
+                },
+                "bindings": {
+                    "textContent": { "<-": "@stories.objectAtCurrentIteration.data.title" },
+                    "href": { "<-": "@stories.objectAtCurrentIteration.data.url" }
+                }
+            },
+            "author": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": { "#": "author" }
+                },
+                "bindings": {
+                    "value": { "<-": "@stories.objectAtCurrentIteration.data.author" }
+                }
+            },
+            "score": {
+                "prototype": "montage/ui/text.reel",
+                "properties": {
+                    "element": { "#": "score" }
+                },
+                "bindings": {
+                    "value": { "<-": "@stories.objectAtCurrentIteration.data.score" }
+                }
             }
         }
     </script>
@@ -52,6 +90,16 @@
         <ul data-montage-id="items">
             <li data-montage-id="item"></li>
         </ul>
+        
+        <table data-montage-id="stories">
+            <tr>
+                <td data-montage-id="score"></td>
+                <td>
+                    <p><a data-montage-id="title"></a></p>
+                    <p>Posted by <span data-montage-id="author"></span></p>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
