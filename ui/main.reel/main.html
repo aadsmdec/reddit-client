@@ -53,13 +53,12 @@
                 }
             },
             "title": {
-                "prototype": "matte/ui/anchor.reel",
+                "prototype": "montage/ui/text.reel",
                 "properties": {
                     "element": { "#": "title" }
                 },
                 "bindings": {
-                    "textContent": { "<-": "@stories.objectAtCurrentIteration.data.title" },
-                    "href": { "<-": "@stories.objectAtCurrentIteration.data.url" }
+                    "value": { "<-": "@stories.objectAtCurrentIteration.data.title" }
                 }
             },
             "author": {
