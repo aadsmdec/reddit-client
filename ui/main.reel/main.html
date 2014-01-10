@@ -2,107 +2,113 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Main</title>
-
+    <title>
+        Main
+    </title>
     <link rel="stylesheet" type="text/css" href="main.css">
-
     <script type="text/montage-serialization">
-        {
-            "owner": {
-                "properties": {
-                    "element": {"#": "main"}
-                }
+    {
+        "owner": {
+            "prototype": "ui/main.reel",
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+        "author": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "author"}
             },
-            "rep": {
-                "prototype": "montage/ui/repetition.reel",
-                "properties": {
-                    "element": { "#": "items" },
-                    "isSelectionEnabled": true
-                },
-                "bindings": {
-                    "content": {"<-": "@owner.subs.sorted{-data.subscribers}"}
-                }
+            "bindings": {
+                "value": {"<-": "@stories.objectAtCurrentIteration.data.author"}
+            }
+        },
+        "currentsub": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "currentsub"}
             },
-            "item": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": { "#": "item" }
-                },
-                "bindings": {
-                    "value": {"<-": "@rep.objectAtCurrentIteration.data.display_name"}
-                }
+            "bindings": {
+                "value": {"<-": "@rep.selection.0.data.display_name ?? 'Please Select a Sub'"}
+            }
+        },
+        "item": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "item"}
             },
-            
-            "currentsub": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": {"#": "currentsub"}
-                },
-                "bindings": {
-                    "value": {"<-": "@rep.selection.0.data.display_name ?? 'Please Select a Sub'"}
-                }
+            "bindings": {
+                "value": {"<-": "@rep.objectAtCurrentIteration.data.display_name"}
+            }
+        },
+        "rep": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "items"},
+                "isSelectionEnabled": true
             },
-            
-            "stories": {
-                "prototype": "montage/ui/repetition.reel",
-                "properties": {
-                    "element": { "#": "stories" }
-                },
-                "bindings": {
-                    "content": { "<-": "@owner.stories" }
-                }
+            "bindings": {
+                "content": {"<-": "@owner.subs.sorted{-data.subscribers}"}
+            }
+        },
+        "score": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "score"}
             },
-            "title": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": { "#": "title" }
-                },
-                "bindings": {
-                    "value": { "<-": "@stories.objectAtCurrentIteration.data.title" }
-                }
+            "bindings": {
+                "value": {"<-": "@stories.objectAtCurrentIteration.data.score"}
+            }
+        },
+        "stories": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "stories"}
             },
-            "author": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": { "#": "author" }
-                },
-                "bindings": {
-                    "value": { "<-": "@stories.objectAtCurrentIteration.data.author" }
-                }
+            "bindings": {
+                "content": {"<-": "@owner.stories"}
+            }
+        },
+        "title": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "title"}
             },
-            "score": {
-                "prototype": "montage/ui/text.reel",
-                "properties": {
-                    "element": { "#": "score" }
-                },
-                "bindings": {
-                    "value": { "<-": "@stories.objectAtCurrentIteration.data.score" }
-                }
+            "bindings": {
+                "value": {"<-": "@stories.objectAtCurrentIteration.data.title"}
             }
         }
+    }
     </script>
 </head>
 <body>
     <div data-montage-id="main" class="Component">
         <h1 data-montage-id="currentsub"></h1>
-    
         <div class="navigation">
-            <div class="header">Navigation</div>
+            <div class="header">
+                Navigation
+            </div>
             <ul data-montage-id="items">
                 <li data-montage-id="item"></li>
             </ul>
         </div>
-    
         <table data-montage-id="stories">
-            <tbody><tr>
-                <td>
-                    <p class="score" data-montage-id="score"></p>
-                </td>
-                <td>
-                    <p class="title"><a data-montage-id="title"></a></p>
-                    <p class="author">Posted by <span data-montage-id="author"></span></p>
-                </td>
-            </tr></tbody>
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="score" data-montage-id="score"></p>
+                    </td>
+                    <td>
+                        <p class="title">
+                            <a data-montage-id="title"></a>
+                        </p>
+                        <p class="author">
+                            Posted by
+                            <span data-montage-id="author"></span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </body>
